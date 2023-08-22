@@ -1,14 +1,12 @@
-import { StringifyOptions } from "querystring";
-
-type Album = {
+import Form from "@/components/form"
+type Memo = {
   id: string;
-  title: string;
-  artist: string;
-  price: number;
+  content: string;
+  problem: string;
 }
 
-const getData = async (): Promise<Album[]> => {
-  const res = await fetch('http://localhost:4000/albums')
+const getData = async (): Promise<Memo[]> => {
+  const res = await fetch('http://localhost:4000/v1/memo')
   if (!res.ok) {
     throw new Error('Failed to fetch data')
   }
@@ -20,7 +18,7 @@ export default async function Home() {
   console.log(data)
   return (
     <main>
-      {data[0].title}
+      <Form/>
     </main>
-  )
+  ) 
 }
